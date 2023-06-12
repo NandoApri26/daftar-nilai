@@ -100,7 +100,7 @@
                         </button> --}}
                         <button type="submit" data-modal-hide="editMahasiswa" class="">
                             <h1
-                                class="px-20 py-2 text-amber-600 font-semibold bg-yellow-200 border border-amber-400 rounded-md hover:bg-yellow-100 ">
+                                class="px-20 py-2 text-base text-amber-600 font-semibold bg-yellow-200 border border-amber-400 rounded-md hover:bg-yellow-100 ">
                                 Tambah Mahasiswa</h1>
                         </button>
                     </div>

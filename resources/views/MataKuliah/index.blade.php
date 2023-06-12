@@ -59,7 +59,7 @@
                 </svg>
                 <h1 class="text-sm text-amber-600 font-medium group-hover:text-amber-500">Tambah</h1>
             </button>
-            {{-- @include('MataKuliah.create') --}}
+            @include('MataKuliah.create')
             {{-- End Tambah data --}}
 
             {{-- Filter --}}
@@ -123,7 +123,7 @@
                         </td>
                         <td class="flex flex-col px-2 py-4 space-y-2">
                             {{-- Edit --}}
-                            <button type="button" data-modal-target="editMahasiswa" data-modal-toggle="editMahasiswa"
+                            <button type="button" data-modal-target="editMataKuliah" data-modal-toggle="editMataKuliah"
                                 class="flex items-center space-x-2 group">
                                 <svg width="16" height="17" viewBox="0 0 20 21" fill="none">
                                     <path
@@ -140,7 +140,7 @@
                                 </svg>
                                 <h1 class="text-sm text-amber-600 font-medium">Edit</h1>
                             </button>
-                            @include('Mahasiswa.update')
+                            @include('MataKuliah.update')
 
                             {{-- Delete --}}
                             <button type="button" data-modal-target="hapus" data-modal-toggle="hapus"
