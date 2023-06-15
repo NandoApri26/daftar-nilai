@@ -23,6 +23,12 @@ Route::get('/', function () {
 });
 
 Route::get('/', [DashboardController::class, 'index']);
-Route::get('/Dosen', [DosenController::class, 'index']);
-Route::get('/Mahasiswa', [MahasiswaController::class, 'index']);
-Route::get('/MataKuliah', [MataKuliahController::class, 'index']);
+Route::get('/Dashboard', [DashboardController::class, 'index'])->name('Dashboard');
+
+Route::get('/Dosen', [DosenController::class, 'index'])->name('Dosen');
+
+// Mahasiswa
+Route::get('/Mahasiswa', [MahasiswaController::class, 'index'])->name('Mahasiswa');
+Route::get('/Mahasiswa/{id}', [MahasiswaController::class, 'show'])->name('Mahasiswa.show');
+
+Route::get('/MataKuliah', [MataKuliahController::class, 'index'])->name('MataKuliah');

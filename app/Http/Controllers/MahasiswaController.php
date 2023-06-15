@@ -35,7 +35,7 @@ class MahasiswaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('Mahasiswa.detail');
     }
 
     /**
