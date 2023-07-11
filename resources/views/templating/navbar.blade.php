@@ -1,5 +1,5 @@
 {{-- Start Navbar --}}
-<nav class="w-full flex sticky top-0 z-40 px-10 py-5 bg-white shadow-lg justify-between items-center ">
+<nav class="w-full flex fixed top-0 z-40 px-10 py-5 bg-white shadow-lg justify-between items-center ">
     <a href="{{ route('Dashboard') }}">
         {{-- <div class="text-4xl font-bold">
             <h1 class="text-sky-600">Template

@@ -10,8 +10,9 @@
 <body>
     @include('templating.navbar')
     @include('templating.sidebar')
-    <div class="ml-60 h-screen p-8 bg-gray-50">
+    <div class="mt-20 ml-60 h-screen p-8 bg-gray-50">
         @yield('content')
+        @include('templating.footer')
     </div>
 </body>
 

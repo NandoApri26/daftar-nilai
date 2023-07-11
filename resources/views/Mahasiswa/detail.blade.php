@@ -106,7 +106,7 @@
                             <th scope="col" class="p-4">No</th>
                             <th scope="col" class="px-6 py-4">Semester</th>
                             <th scope="col" class="px-6 py-4">SKS</th>
-                            <th scope="col" class="px-6 py-4">IP Sementara</th>
+                            <th scope="col" class="px-6 py-4">IPS</th>
                             <th scope="col" class="px-6 py-4">IP</th>
                         </tr>
                     </thead>
@@ -116,19 +116,23 @@
                                 <th class="p-4">
                                     1
                                 </th>
-                                <td class="px-6 py-4">
-                                    <a href="">
+                                <td class="px-6 py-4 w-full">
+                                    <a href="{{ route('DaftarNilai') }}" class="text-blue-500">
                                         Semester 1
                                     </a>
                                 </td>
                                 <td class="px-6 py-4">
                                     22
                                 </td>
-                                <td class="px-6 py-4">
-                                    3.60
+                                <td class="px-6 py-4 text-blue-500">
+                                    <a href="">
+                                        3.60
+                                    </a>
                                 </td>
-                                <td class="px-6 py-4">
-                                    3.60
+                                <td class="px-6 py-4 text-blue-500">
+                                    <a href="">
+                                        3.60
+                                    </a>
                                 </td>
                             </tr>
                         @endfor

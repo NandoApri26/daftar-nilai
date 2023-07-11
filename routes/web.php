@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DaftarNilaiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
@@ -32,3 +33,5 @@ Route::get('/Mahasiswa', [MahasiswaController::class, 'index'])->name('Mahasiswa
 Route::get('/Mahasiswa/{id}', [MahasiswaController::class, 'show'])->name('Mahasiswa.show');
 
 Route::get('/MataKuliah', [MataKuliahController::class, 'index'])->name('MataKuliah');
+
+Route::get('/DaftarNilai', [DaftarNilaiController::class, 'index'])->name('DaftarNilai');
