@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('dosens', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('nidn');
+            $table->string('nidn')->unique();
             $table->text('alamat');
             $table->string('foto');
+            $table->foreignId('prodi_id')->constrained('prodis')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

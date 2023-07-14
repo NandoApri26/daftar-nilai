@@ -1,10 +1,16 @@
 <?php
 
+// Controller
 use App\Http\Controllers\DaftarNilaiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MataKuliahController;
+
+// Model
+use App\Models\Dosen;
+
+// Route
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -27,6 +33,11 @@ Route::get('/', [DashboardController::class, 'index']);
 Route::get('/Dashboard', [DashboardController::class, 'index'])->name('Dashboard');
 
 Route::get('/Dosen', [DosenController::class, 'index'])->name('Dosen');
+Route::post('/Dosen/create', [DosenController::class, 'create'])->name('Create');
+Route::get('/Dosen/{dosen}', [DosenController::class, 'show'])->name('Detail');
+Route::get('/Dosen/{dosen}/edit', [DosenController::class, 'edit'])->name('Edit');
+Route::patch('/Dosen/{dosen}', [DosenController::class, 'update'])->name('Update');
+Route::delete('/Dosen/{dosen}', [DosenController::class, 'destroy'])->name('Delete');
 
 // Mahasiswa
 Route::get('/Mahasiswa', [MahasiswaController::class, 'index'])->name('Mahasiswa');
