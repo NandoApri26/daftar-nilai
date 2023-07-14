@@ -12,12 +12,15 @@ class KRS extends Model
     public $guarded = ['id'];
     protected $table = 'krses';
     public function dosens(){
-        return $this -> BelongsTo('App\Models\Dosen');
+        return $this -> belongsTo('App\Models\Dosen');
     }
     public function mahasiswas(){
-        return $this -> BelongsTo('App\Models\Mahasiswa');
+        return $this -> belongsTo('App\Models\Mahasiswa');
     }
     public function mata_kulias(){
-        return $this -> BelongsTo('App\Models\MataKuliah');
+        return $this -> belongsTo('App\Models\MataKuliah');
+    }
+    public function semesters(){
+        return $this -> belongsTo('App\Models\Semester');
     }
 }

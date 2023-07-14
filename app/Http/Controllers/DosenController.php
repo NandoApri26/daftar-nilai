@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fakultas;
+use App\Models\ProgramStudi;
 use App\Models\Dosen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class DosenController extends Controller
 {
@@ -12,8 +16,11 @@ class DosenController extends Controller
      */
     public function index()
     {
+
+        $fakultas = Fakultas::all();
+        $prodi = ProgramStudi::all();
         $dosen = Dosen::all();
-        return view('Dosen.index', compact('dosen'));
+        return view('Dosen.index', compact('dosen', 'fakultas', 'prodi'));
     }
 
     /**
@@ -44,6 +51,7 @@ class DosenController extends Controller
                 'nama' => $request->nama,
                 'nidn' => $request->nidn,
                 'alamat' => $request->alamat,
+                'prodi_id' => $request->prodi,
                 'foto' => $filename,
             ]
         );
@@ -89,6 +97,7 @@ class DosenController extends Controller
                     'nama' => $request->nama,
                     'nidn' => $request->nidn,
                     'alamat' => $request->alamat,
+                    'prodi_id' => $request->prodi,
                     'foto' => $filename,
                 ]
             );
@@ -97,7 +106,8 @@ class DosenController extends Controller
                 [
                     'nama' => $request->nama,
                     'nidn' => $request->nidn,
-                    'alamat' => $request->alamat
+                    'alamat' => $request->alamat,
+                    'prodi_id' => $request->prodi,
                 ]
             );
         }
@@ -109,7 +119,12 @@ class DosenController extends Controller
      */
     public function destroy(Dosen $dosen)
     {
-        Dosen::destroy('id', $dosen->id);
-        return redirect('/Dosen')->with('Success', true);
+        if (file_exists(public_path('foto_dosen/' . $dosen->foto))){
+            $filedeleted = unlink(public_path('foto_dosen/' . $dosen->foto));
+            if ($filedeleted) {
+               Dosen::destroy('id', $dosen->id);
+               return redirect('/Dosen')->with('Success', true);
+            }
+         }
     }
 }

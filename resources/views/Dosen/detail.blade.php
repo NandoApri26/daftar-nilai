@@ -24,8 +24,8 @@
                 </div>
                 <div class="text-lg text-center text-gray-500 font-semibold">
                     <h1 class="">{{ $item->nidn }}</h1>
-                    <h1 class="">Fakultas</h1>
-                    <h1 class="">Program Studi</h1>
+                    <h1 class="">{{ $item->prodi->fakultas->fakultas }}</h1>
+                    <h1 class="">{{ $item->prodi->program_studi }}</h1>
                     <h1 class="">{{ $item->alamat }}</h1>
                 </div>
             </div>

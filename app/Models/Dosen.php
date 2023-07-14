@@ -10,7 +10,7 @@ class Dosen extends Model
     use HasFactory;
     public $guarded = ['id'];
     protected $table = 'dosens';
-    public function prodis(){
+    public function prodi(){
         return $this -> belongsTo('App\Models\ProgramStudi');
     }
 }

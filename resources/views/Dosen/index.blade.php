@@ -134,7 +134,7 @@
             </thead>
             <tbody class="border border-yellow-400 align-top">
                 @foreach ($dosen as $item)
-                    <tr class="text-xs text-gray-600 {{ ($loop->index + 1) % 2 == 0 ? 'bg-yellow-50' : 'bg-white' }}">
+                    <tr @class(['text-xs text-gray-600 bg-white', 'bg-yellow-50' => ($loop->index + 1) % 2 == 0])>
                         <th class="p-4">
                             {{ $loop->iteration }}
                         </th>

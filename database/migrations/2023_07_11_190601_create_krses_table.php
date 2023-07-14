@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('krses', function (Blueprint $table) {
             $table->id();
-            $table->string('semester');
             $table->integer('sks');
             $table->string('tahun_ajaran');
             $table->foreignId('dosen_id')->constrained('dosens')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('mahasiswa_id')->constrained('mahasiswas')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('mata_kuliah_id')->constrained('mata_kulias')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('semester_id')->constrained('semesters')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
     }

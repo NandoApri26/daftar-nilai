@@ -23,42 +23,42 @@
                         <label for="Nama" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                         <input type="text" name="nama" id="nama"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                            value="{{ $item->nama }}" required>
+                            value="{{ $item->nama }}">
                     </div>
                     <div class="w-full">
                         <label for="nidn" class="block mb-2 text-sm font-medium text-gray-900">NIDN</label>
                         <input type="text" name="nidn" id="nidn"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                            value="{{ $item->nidn }}" required>
+                            value="{{ $item->nidn }}">
                     </div>
                     <div class="w-full">
                         <label for="Fakultas" class="block mb-2 text-sm font-medium text-gray-900">Fakultas</label>
-                        <select type="text" name="fakultas" id="fakultas"
+                        <select name="fakultas" id="fakultas"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
                         >
                             <option value="" class="text-gra3-600">Pilih Fakultas</option>
-                            @for ($i = 1; $i <= 5; $i++)
-                                <option value="">Ilmu Komputer</option>
-                            @endfor
+                            @foreach ($fakultas as $i)
+                                <option @selected( $item->prodi->fakultas->id == $i->id ) value="{{ $i->id }}">{{ $i->fakultas }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="w-full">
                         <label for="programStudi" class="block mb-2 text-sm font-medium text-gray-900">Program
                             Studi</label>
-                        <select type="text" name="fakultas" id="fakultas"
+                        <select name="prodi" id="prodi"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
                         >
                             <option value="" class="text-gra3-600">Pilih Program Studi</option>
-                            @for ($i = 1; $i <= 5; $i++)
-                                <option value="">Sistem Komputer</option>
-                            @endfor
+                            @foreach ($prodi as $i)
+                                <option @selected( $item->prodi->id == $i->id) value="{{ $i->id }}">{{ $i->program_studi }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="w-full">
                         <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900">Alamat</label>
                         <input type="text" name="alamat" id="alamat"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full px-4 py-6"
-                            value="{{ $item->alamat }}" required>
+                            value="{{ $item->alamat }}">
                     </div>
                     <div class="w-full">
                         <label for="foto" class="block mb-2 text-sm font-medium text-gray-900">Pilih Foto</label>
