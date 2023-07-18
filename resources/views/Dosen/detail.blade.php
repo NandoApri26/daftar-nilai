@@ -22,7 +22,7 @@
                     <h1 class="text-3xl text-center text-gray-900 font-bold">{{ ucwords($item->nama) }}</h1>
                     <h1 class="text-2xl text-center text-gray-500 font-bold">Dosen</h1>
                 </div>
-                <div class="text-lg text-center text-gray-500 font-semibold">
+                <div class="text-lg text-center text-gray-500 font-medium">
                     <h1 class="">{{ $item->nidn }}</h1>
                     <h1 class="">{{ $item->prodi->fakultas->fakultas }}</h1>
                     <h1 class="">{{ $item->prodi->program_studi }}</h1>

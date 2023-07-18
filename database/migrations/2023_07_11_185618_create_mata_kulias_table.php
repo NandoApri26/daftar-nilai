@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mata_kulias', function (Blueprint $table) {
             $table->id();
-            $table->integer('kode_mk');
+            $table->string('kode_mk')->unique();
             $table->string('mata_kuliah');
             $table->foreignId('prodi_id')->constrained('prodis')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();

@@ -21,13 +21,13 @@
                             <label for="Nama" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                             <input type="text" name="nama" id="nama"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                                placeholder="Masukkan nama" required>
+                                placeholder="Masukkan nama">
                         </div>
                         <div class="w-full">
                             <label for="nidn" class="block mb-2 text-sm font-medium text-gray-900">NIM</label>
                             <input type="text" name="nidn" id="nidn"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                                placeholder="Masukkan no induk" required>
+                                placeholder="Masukkan no induk mahasiswa">
                         </div>
                     </div>
                     <div class="flex space-x-5">
@@ -35,15 +35,15 @@
                             <label for="nidn" class="block mb-2 text-sm font-medium text-gray-900">Angkatan</label>
                             <input type="text" name="nidn" id="nidn"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                                placeholder="Masukkan no induk" required>
+                                placeholder="Masukkan angkatan">
                         </div>
                         <div class="w-full">
                             <label for="Fakultas" class="block mb-2 text-sm font-medium text-gray-900">Fakultas</label>
                             <select type="text" name="fakultas" id="fakultas"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4" required>
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
                                 <option value="" class="text-gra3-600">Pilih Fakultas</option>
                                 @for ($i = 1; $i <= 5; $i++)
-                                <option value="">Ilmu Komputer</option>
+                                    <option value="">Ilmu Komputer</option>
                                 @endfor
                             </select>
                         </div>
@@ -52,34 +52,39 @@
                         <div class="w-full">
                             <label for="programStudi" class="block mb-2 text-sm font-medium text-gray-900">Program
                                 Studi</label>
-                                <select name="programStudi" id="programStudi"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4" required>
+                            <select name="programStudi" id="programStudi"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
                                 <option value="">Pilih Program Studi</option>
                                 @for ($i = 1; $i <= 5; $i++)
-                                <option value="">Sistem Komputer</option>
+                                    <option value="">Sistem Komputer</option>
                                 @endfor
                             </select>
                         </div>
                         <div class="w-full">
-                            <label for="statusMasuk" class="block mb-2 text-sm font-medium text-gray-900">Status Masuk</label>
-                            <select name="statusMasuk" id="statusMasuk"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4" required>
-                                <option value="">Pilih Status Masuk</option>
-                                @for ($i = 1; $i <= 5; $i++)
-                                <option value="">Reguler</option>
-                                @endfor
+                            <label for="waktuKuliah" class="block mb-2 text-sm font-medium text-gray-900">Waktu Kuliah</label>
+                            <select name="waktuKuliah" id="waktuKuliah"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
+                                <option value="">Pilih Waktu Kuliah</option>
+                                <option value="0">Pagi</option>
+                                <option value="1">Siang</option>
+                                <option value="2">Sore</option>
                             </select>
                         </div>
                     </div>
                     <div class="flex space-x-5">
                         <div class="w-full">
                             <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900">Kelas</label>
-                            <input type="text" name="kelas" id="kelas"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                                placeholder="Masukkan kelas" required>
+                            <select name="kelas" id="kelas"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
+                                <option value="">Pilih Kelas</option>
+                                <option value="0">A</option>
+                                <option value="1">B</option>
+                                <option value="2">C</option>
+                            </select>
                         </div>
                         <div class="w-full">
-                            <label for="foto" class="block mb-2 text-sm font-medium text-gray-900">Pilih Foto</label>
+                            <label for="foto" class="block mb-2 text-sm font-medium text-gray-900">Pilih
+                                Foto</label>
                             <div class="bg-gray-50 border border-gray-300 py-1.5 rounded-md w-full">
                                 <label class="flex flex-wrap items-center justify-between cursor-pointer">
                                     <div class="text-sm px-5 ">Pilih foto</div>

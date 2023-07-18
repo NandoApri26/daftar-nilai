@@ -11,7 +11,7 @@ class MataKuliah extends Model
 
     public $guarded = ['id'];
     protected $table = 'mata_kulias';
-    public function prodis(){
+    public function prodi(){
         return $this -> belongsTo('App\Models\ProgramStudi');
     }
 }

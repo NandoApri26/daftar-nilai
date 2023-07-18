@@ -11,7 +11,7 @@ class Mahasiswa extends Model
     public $guarded = ['id'];
     protected $table = 'mahasiswas';
 
-    public function prodis(){
+    public function prodi(){
         return $this -> belongsTo('App\Models\ProgramStudi');
     }
 }

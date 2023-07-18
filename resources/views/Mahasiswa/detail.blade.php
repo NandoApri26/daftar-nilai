@@ -34,7 +34,7 @@
 
     {{-- Start Data Mahasiswa --}}
     <div class="w-full flex mt-16 space-x-10">
-        <div class="w-[712px] border border-amber-600 rounded-t-lg shadow-xl">
+        <div class="w-[582px] h-[578px] border border-amber-600 rounded-t-lg shadow-xl">
             <div class="w-full">
                 <div class="flex justify-between space-x-20 p-5 bg-yellow-200 rounded-t-lg border-b border-amber-600">
                     <h1 class="text-sm text-amber-600 font-bold">Data Mahasiswa</h1>
@@ -42,31 +42,24 @@
                 </div>
                 <div class="py-10">
                     <div class="w-full flex justify-center">
-                        <img src="{{ asset('image/nando.jpg') }}" alt="" class="w-36 h-53 object-cover">
+                        <img src="{{ asset('image/1.jpeg') }}" alt="" class="w-36 h-53 object-cover">
                     </div>
                     <h1 class="mt-5 text-gray-600 text-center font-bold">Daffa Bima Perdana</h1>
                 </div>
-                <div class="flex px-5 space-x-3 text-gray-600 font-bold">
+                <div class="flex px-5 space-x-8 text-gray-600 font-medium">
                     <div class="">
                         <h1>NIM</h1>
                         <h1>Angkatan</h1>
                         <h1>Fakultas</h1>
                         <h1>Program Studi</h1>
-                        <h1>Status Masuk</h1>
                         <h1>Kelas</h1>
                     </div>
                     <div class="">
-                        @for ($i = 1; $i < 7; $i++)
-                            <h1>:</h1>
-                        @endfor
-                    </div>
-                    <div class="">
-                        <h1>1998278938</h1>
-                        <h1>2019</h1>
-                        <h1>Sains dan Teknologi</h1>
-                        <h1>Sistem Komputer</h1>
-                        <h1>Mandiri</h1>
-                        <h1>AB</h1>
+                        <h1>:1998278938</h1>
+                        <h1>:2019</h1>
+                        <h1>:Ilmu Komputer</h1>
+                        <h1>:Teknik Informatika</h1>
+                        <h1>:A</h1>
                     </div>
                 </div>
             </div>
@@ -138,8 +131,9 @@
                         @endfor
                         <tr>
                             <th colspan="2" class="px-4">Total</th>
-                            <th colspan="2" class="px-6 py-4">22</th>
-                            <th colspan="2" class="px-6 py-4">3.60</th>
+                            <th class="px-6 py-4">22</th>
+                            <th class="px-6 py-4">3.60</th>
+                            <th class="px-6 py-4">3.60</th>
                         </tr>
                     </tbody>
                 </table>

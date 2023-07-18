@@ -28,16 +28,22 @@ class DosenController extends Controller
      */
     public function create(Request $request)
     {
-        $this->validate($request,
+        $this->validate(
+            $request,
             [
                 'nama' => 'required',
-                'nidn' => 'required|min:11|max:11',
+                'nidn' => 'required|unique:dosens,nidn|min:11|max:11',
+                'fakultas' => 'required',
+                'prodi' => 'required',
                 'alamat' => 'required|max:100',
                 'foto' => 'required'
             ],
             [
                 'nama.required' => 'Nama harus diisi',
+                'nidn.unique' => 'NIDN sudah terdaftar',
                 'nidn.required' => 'NIDN tidak boleh lebih dari 11 karakter',
+                'fakultas.required' => 'Fakultas wajib diisi',
+                'prodi.required' => 'Program studi wajib diisi',
                 'alamat.required' => 'Alamat tidak boleh lebih dari 100 karakter',
                 'foto.required' => 'Foto wajib diisi'
             ]
@@ -51,11 +57,12 @@ class DosenController extends Controller
                 'nama' => $request->nama,
                 'nidn' => $request->nidn,
                 'alamat' => $request->alamat,
+                'fakultas_id' => $request->fakultas,
                 'prodi_id' => $request->prodi,
                 'foto' => $filename,
             ]
         );
-        return redirect('/Dosen')->with('success', 'Berhasil ditambah');
+        return redirect('/Dosen')->with('Success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -71,7 +78,7 @@ class DosenController extends Controller
      */
     public function show(Dosen $dosen)
     {
-        return view('Dosen.detail', compact('dosen'));
+        return view('Dosen.detail', compact('dosen', 'prodi'));
     }
 
     /**
@@ -87,16 +94,30 @@ class DosenController extends Controller
      */
     public function update(Request $request, Dosen $dosen)
     {
+        // $request->validate(
+        //     [
+        //         'nidn' => 'required|unique:dosens,nidn|min:11|max:11',
+        //     ],
+        //     [
+        //         'nidn.unique' => 'NIDN sudah terdaftar',
+        //         'nidn.required' => 'NIDN tidak boleh lebih dari 11 karakter',
+        //     ]
+        // );      
         if ($request->foto != null) {
             $img = $request->file('foto'); //Menggambil file dari form
             $filename = time() . "-" . $img->getClientOriginalName(); //mengambil dan mengedit nama file dari form
             $img->move('foto_dosen/', $filename); //proses memasukkan file kedalam direktori laravel
-            
+
+            if (file_exists(public_path('foto_dosen/' . $dosen->foto))) {
+                unlink(public_path('foto_dosen/' . $dosen->foto));
+            }
+
             Dosen::where('id', $dosen->id)->update(
                 [
                     'nama' => $request->nama,
                     'nidn' => $request->nidn,
                     'alamat' => $request->alamat,
+                    // 'fakultas_id' => $request->fakultas,
                     'prodi_id' => $request->prodi,
                     'foto' => $filename,
                 ]
@@ -111,7 +132,7 @@ class DosenController extends Controller
                 ]
             );
         }
-        return redirect('/Dosen');
+        return redirect('/Dosen')->with('Success', 'Data berhasil diubah');
     }
 
     /**
@@ -119,12 +140,12 @@ class DosenController extends Controller
      */
     public function destroy(Dosen $dosen)
     {
-        if (file_exists(public_path('foto_dosen/' . $dosen->foto))){
+        if (file_exists(public_path('foto_dosen/' . $dosen->foto))) {
             $filedeleted = unlink(public_path('foto_dosen/' . $dosen->foto));
             if ($filedeleted) {
-               Dosen::destroy('id', $dosen->id);
-               return redirect('/Dosen')->with('Success', true);
+                Dosen::destroy('id', $dosen->id);
+                return redirect('/Dosen')->with('Success', 'Data berhasil dihapus');
             }
-         }
+        }
     }
 }

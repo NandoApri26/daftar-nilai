@@ -16,41 +16,55 @@
             <div class="px-6 py-10">
                 <h3 class="mb-10 pb-3 text-xl font-medium text-gray-900 border-b border-gray-600">Tambah Mata Kuliah
                 </h3>
-                <form class="space-y-6" action="#">
+                <form class="space-y-6" action="{{ url('/MataKuliah/create') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
                     <div class="w-full">
-                        <label for="kode" class="block mb-2 text-sm font-medium text-gray-900">Kode</label>
-                        <input type="text" name="kode" id="kode"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                            placeholder="Masukkan kode" required>
+                        <label for="kodeMK" class="block mb-2 text-sm font-medium text-gray-900">Kode Mata
+                            Kuliah</label>
+                        <input type="text" name="kodeMK" id="kodeMK" value="{{ old('kode_mk') }}"
+                            class="@error('kodeMK') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
+                            placeholder="Masukkan kode mata kuliah">
+                        @error('kodeMK')
+                            <div class="text-xs text-red-600">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="w-full">
-                        <label for="nidn" class="block mb-2 text-sm font-medium text-gray-900">Mata Kuliah (MK)</label>
-                        <input type="text" name="nidn" id="nidn"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                            placeholder="Masukkan no induk" required>
+                        <label for="mata_kuliah" class="block mb-2 text-sm font-medium text-gray-900">Mata
+                            Kuliah</label>
+                        <input type="text" name="mata_kuliah" id="mata_kuliah"
+                            class="@error('mata_kuliah') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
+                            placeholder="Masukkan mata kuliah">
+                        @error('mata_kuliah')
+                            <div class="text-xs text-red-600">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="Fakultas" class="block mb-2 text-sm font-medium text-gray-900">Fakultas</label>
                         <select type="text" name="fakultas" id="fakultas"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                            required>
-                            <option value="" class="text-gra3-600">Pilih Fakultas</option>
-                            @for ($i = 1; $i <= 5; $i++)
-                                <option value="">Ilmu Komputer</option>
-                            @endfor
+                            class="@error('fakultas') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
+                            <option value="" class="text-gray-600">Pilih Fakultas</option>
+                            @foreach ($fakultas as $item)
+                                <option value="{{ $item->id }}">{{ $item->fakultas }}</option>
+                            @endforeach
                         </select>
+                        @error('fakultas')
+                            <div class="text-xs text-red-600">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="programStudi" class="block mb-2 text-sm font-medium text-gray-900">Program
                             Studi</label>
-                        <select name="programStudi" id="programStudi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                            required>
-                            <option value="">Pilih Program Studi</option>
-                            @for ($i = 1; $i <= 5; $i++)
-                                <option value="">Sistem Komputer</option>
-                            @endfor
+                        <select type="text" name="prodi" id="prodi"
+                            class="@error('prodi') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
+                            <option value="" class="text-gray-600">Pilih Program Studi</option>
+                            @foreach ($prodi as $item)
+                                <option value="{{ $item->id }}">{{ $item->program_studi }}</option>
+                            @endforeach
                         </select>
+                        @error('prodi')
+                            <div class="text-xs text-red-600">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="flex space-x-3 justify-center">
                         {{-- <button type="button" data-modal-hide="tambahMahasiswa" class="">

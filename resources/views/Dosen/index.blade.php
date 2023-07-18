@@ -3,30 +3,52 @@
 
 @section('content')
     @if (session()->has('Success'))
-        <div id="alert-3"
-            class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+        <div id="alert"
+            class="flex items-center p-4 mb-4 text-green-800 rounded-lg transition duration-300 delay-200 bg-green-200 dark:bg-gray-800 dark:text-green-400"
             role="alert">
-            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" fill="currentColor"
-                viewBox="0 0 20 20">
+            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                 <path
                     d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
             </svg>
             <span class="sr-only">Info</span>
             <div class="ml-3 text-sm font-medium">
-                Data berhasil dihapus
+                {{ Session::get('Success') }}
             </div>
             <button type="button"
-                class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"
-                data-dismiss-target="#alert-3" aria-label="Close">
+                class="ml-auto -mx-1.5 -my-1.5 bg-green-100 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700 duration-150"
+                data-dismiss-target="#alert" aria-label="Close">
                 <span class="sr-only">Close</span>
-                <svg class="w-3 h-3" aria-hidden="true" fill="none"
-                    viewBox="0 0 14 14">
+                <svg class="w-3 h-3" aria-hidden="true" fill="none" viewBox="0 0 14 14">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                 </svg>
             </button>
         </div>
     @endif
+    
+    {{-- @error('nama')
+        <div id="alert"
+            class="flex items-center p-4 mb-4 text-red-800 rounded-lg transition duration-300 delay-200 bg-red-200 dark:bg-gray-800 dark:text-red-400"
+            role="alert">
+            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+            </svg>
+            <span class="sr-only">Info</span>
+            <div class="ml-3 text-sm font-medium">
+                {{ $message }}
+            </div>
+            <button type="button"
+                class="ml-auto -mx-1.5 -my-1.5 bg-red-100 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-red-400 dark:hover:bg-gray-700 duration-150"
+                data-dismiss-target="#alert" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+    @enderror --}}
 
     <div class="py-6">
         <h1 class="text-4xl text-gray-900 font-bold">
@@ -134,7 +156,10 @@
             </thead>
             <tbody class="border border-yellow-400 align-top">
                 @foreach ($dosen as $item)
-                    <tr @class(['text-xs text-gray-600 bg-white', 'bg-yellow-50' => ($loop->index + 1) % 2 == 0])>
+                    <tr @class([
+                        'text-xs text-gray-600 bg-white',
+                        'bg-yellow-50' => ($loop->index + 1) % 2 == 0,
+                    ])>
                         <th class="p-4">
                             {{ $loop->iteration }}
                         </th>
@@ -145,16 +170,17 @@
                             {{ $item->nidn }}
                         </td>
                         <td class="px-6 py-4">
-                            Ilmu Komputer
+                            {{ ucwords($item->prodi->fakultas->fakultas) }}
                         </td>
                         <td class="px-6 py-4">
-                            Teknik Informatika
+                            {{ ucwords($item->prodi->program_studi) }}
                         </td>
                         <td class="px-6 py-4 w-44">
                             {{ strlen($item->alamat) > 25 ? substr($item->alamat, 0, 40) . '...' : $item->alamat }}
                         </td>
                         <td class="px-6 py-4">
-                            <img src="{{ asset('foto_dosen/' . $item->foto) }}" alt="image" class="w-16 h-16 rounded-md">
+                            <img src="{{ asset('foto_dosen/' . $item->foto) }}" alt="image"
+                                class="w-16 h-16 rounded-md">
                         </td>
                         <td class="flex flex-col px-6 py-4 space-y-2">
                             {{-- View --}}
@@ -193,7 +219,8 @@
 
                             {{-- Delete --}}
                             <button type="button" data-modal-target="{{ 'hapusDosen' . $item->id }}"
-                                data-modal-toggle="{{ 'hapusDosen' . $item->id }}" class="flex items-center space-x-2 focus:ring-0 focus:outline-none">
+                                data-modal-toggle="{{ 'hapusDosen' . $item->id }}"
+                                class="flex items-center space-x-2 focus:ring-0 focus:outline-none">
                                 <svg width="16" height="17" viewBox="0 0 20 21" fill="none">
                                     <path
                                         d="M16.875 3.00001H13.125V1.75C13.125 1.05938 12.5656 0.5 11.875 0.5H8.12499C7.43436 0.5 6.87499 1.05938 6.87499 1.75V3.00001H3.125C2.43438 3.00001 1.875 3.55938 1.875 4.25001V5.50001C1.875 6.19 2.43438 6.74938 3.12376 6.75002H16.8757C17.5656 6.74938 18.125 6.19 18.125 5.50001V4.24998C18.125 3.55938 17.5656 3.00001 16.875 3.00001ZM11.875 3.00001H8.12499V2.37499C8.12499 2.03 8.40498 1.74998 8.74998 1.74998H11.25C11.595 1.74998 11.875 2.02997 11.875 2.37499V3.00001ZM3.12498 18C3.12498 19.3806 4.24434 20.5 5.62498 20.5H14.375C15.7556 20.5 16.875 19.3806 16.875 18V7.99999H3.12498V18ZM12.5 9.87501C12.5 9.53002 12.78 9.25 13.125 9.25C13.47 9.25 13.75 9.52999 13.75 9.87501V17.375C13.75 17.72 13.47 18 13.125 18C12.78 18 12.5 17.72 12.5 17.375V9.87501ZM9.37499 9.87501C9.37499 9.53002 9.65499 9.25 10 9.25C10.345 9.25 10.625 9.52999 10.625 9.87501V17.375C10.625 17.72 10.345 18 10 18C9.65501 18 9.37499 17.72 9.37499 17.375V9.87501ZM6.24997 9.87501C6.24997 9.53002 6.52997 9.25 6.87499 9.25C7.22001 9.25 7.5 9.52999 7.5 9.87501V17.375C7.5 17.72 7.22001 18 6.87499 18C6.52997 18 6.24997 17.72 6.24997 17.375V9.87501Z"

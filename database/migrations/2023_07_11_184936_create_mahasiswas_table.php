@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('nim');
+            $table->integer('nim')->unique();
             $table->integer('angkatan');
-            $table->string('status_masuk');
             $table->string('kelas');
             $table->string('foto');
             $table->foreignId('prodi_id')->constrained('prodis')->onDelete('restrict')->onUpdate('restrict');

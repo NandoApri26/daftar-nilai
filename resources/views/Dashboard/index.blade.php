@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="py-6 mb-20">
+    <div class="py-6 mb-10">
         <h1 class="text-4xl text-gray-900 font-bold">
             Dashboard
         </h1>
@@ -104,7 +104,7 @@
     {{-- Start Table --}}
     <div class="py-20">
         <table class="w-full text-left rounded-lg overflow-hidden">
-            <thead class="uppercase text-lg text-amber-600 font-bold bg-yellow-200 border border-yellow-400">
+            <thead class="uppercase text-xs text-amber-600 font-bold bg-yellow-200 border border-yellow-400">
                 <tr class="">
                     <th scope="col" class="p-4">No</th>
                     <th scope="col" class="px-6 py-4">Nama</th>
@@ -115,24 +115,7 @@
             </thead>
             <tbody class="border border-yellow-400">
                 @for ($i = 1; $i <= 5; $i++)
-                    <tr class="bg-white text-base text-gray-600">
-                        <th class="p-4">
-                            1
-                        </th>
-                        <td class="px-6 py-4">
-                            Apriando Pratama
-                        </td>
-                        <td class="px-6 py-4">
-                            Ilmu Komputer
-                        </td>
-                        <td class="px-6 py-4">
-                            Teknik Informatika
-                        </td>
-                        <td class="px-6 py-4">
-                            Mahasiswa
-                        </td>
-                    </tr>
-                    <tr class="bg-yellow-50 text-base text-gray-600">
+                    <tr class="bg-white text-xs text-gray-600">
                         <th class="p-4">
                             1
                         </th>

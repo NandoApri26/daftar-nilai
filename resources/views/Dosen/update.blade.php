@@ -15,7 +15,7 @@
             </button>
             <div class="px-6 py-10">
                 <h3 class="mb-10 pb-3 text-xl font-medium text-gray-900 border-b border-gray-600">Edit Data Dosen</h3>
-                <form class="space-y-6" action="{{ url ('/Dosen/' .$item->id) }}" method="POST"
+                <form class="space-y-6" action="{{ url('/Dosen/' . $item->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
@@ -28,10 +28,13 @@
                     <div class="w-full">
                         <label for="nidn" class="block mb-2 text-sm font-medium text-gray-900">NIDN</label>
                         <input type="text" name="nidn" id="nidn"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                            value="{{ $item->nidn }}">
+                            class="@error('nidn') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
+                            value="{{ $item->nidn }}" >
+                        @error('nidn')
+                            <div class="text-xs text-red-600">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <div class="w-full">
+                    {{-- <div class="w-full">
                         <label for="Fakultas" class="block mb-2 text-sm font-medium text-gray-900">Fakultas</label>
                         <select name="fakultas" id="fakultas"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
@@ -41,16 +44,16 @@
                                 <option @selected( $item->prodi->fakultas->id == $i->id ) value="{{ $i->id }}">{{ $i->fakultas }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="w-full">
                         <label for="programStudi" class="block mb-2 text-sm font-medium text-gray-900">Program
                             Studi</label>
                         <select name="prodi" id="prodi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                        >
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
                             <option value="" class="text-gra3-600">Pilih Program Studi</option>
                             @foreach ($prodi as $i)
-                                <option @selected( $item->prodi->id == $i->id) value="{{ $i->id }}">{{ $i->program_studi }}</option>
+                                <option @selected($item->prodi->id == $i->id) value="{{ $i->id }}">{{ $i->program_studi }}
+                                </option>
                             @endforeach
                         </select>
                     </div>

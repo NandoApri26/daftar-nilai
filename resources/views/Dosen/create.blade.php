@@ -39,25 +39,29 @@
                     <div class="w-full">
                         <label for="Fakultas" class="block mb-2 text-sm font-medium text-gray-900">Fakultas</label>
                         <select type="text" name="fakultas" id="fakultas"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                        >
+                            class="@error('fakultas') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
                             <option value="" class="text-gray-600">Pilih Fakultas</option>
                             @foreach ($fakultas as $item)
                                 <option value="{{ $item->id }}">{{ $item->fakultas }}</option>
                             @endforeach
                         </select>
+                        @error('fakultas')
+                            <div class="text-xs text-red-600">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="programStudi" class="block mb-2 text-sm font-medium text-gray-900">Program
                             Studi</label>
                         <select type="text" name="prodi" id="prodi"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
-                        >
+                            class="@error('prodi') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
                             <option value="" class="text-gray-600">Pilih Program Studi</option>
                             @foreach ($prodi as $item)
                                 <option value="{{ $item->id }}">{{ $item->program_studi }}</option>
                             @endforeach
                         </select>
+                        @error('prodi')
+                            <div class="text-xs text-red-600">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="w-full">
                         <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900">Alamat</label>
@@ -77,7 +81,8 @@
                                     <span
                                         class="px-8 py-2 text-base text-amber-600 font-semibold rounded-md bg-yellow-200 border border-yellow-300 hover:bg-yellow-100">Pilih</span>
                                 </div>
-                                <input type="file" name="foto" id="foto" value="$img->move('foto_dosen/', $filename)"
+                                <input type="file" name="foto" id="foto"
+                                    value="$img->move('foto_dosen/', $filename)"
                                     class="hidden @error('foto') is-invalid @enderror">
                             </label>
                         </div>

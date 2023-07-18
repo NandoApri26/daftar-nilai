@@ -3,6 +3,30 @@
 
 @section('content')
 
+    @if (session()->has('Success'))
+        <div id="alert"
+            class="flex items-center p-4 mb-4 text-green-800 rounded-lg transition duration-300 delay-200 bg-green-200 dark:bg-gray-800 dark:text-green-400"
+            role="alert">
+            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+            </svg>
+            <span class="sr-only">Info</span>
+            <div class="ml-3 text-sm font-medium">
+                {{ Session::get('Success') }}
+            </div>
+            <button type="button"
+                class="ml-auto -mx-1.5 -my-1.5 bg-green-100 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700 duration-150"
+                data-dismiss-target="#alert" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+    @endif
+
     <div class="py-6">
         <h1 class="text-4xl text-gray-900 font-bold">
             Mata Kuliah
@@ -51,7 +75,7 @@
         <div class="w-full flex justify-end space-x-3">
             {{-- Start Tambah data --}}
             <button type="button" data-modal-target="tambahMataKuliah" data-modal-toggle="tambahMataKuliah"
-                class="flex px-5 py-2 items-center space-x-3 bg-yellow-200 rounded-lg border border-amber-300 group hover:bg-yellow-100">
+                class="flex px-5 py-2 items-center space-x-3 bg-yellow-200 rounded-lg border border-amber-300 group focus:ring-0 focus:outline-none hover:bg-yellow-100">
                 <svg width="13" height="13" viewBox="0 0 15 15" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M7.5 0C7.89783 0 8.27936 0.158035 8.56067 0.439339C8.84196 0.720645 9 1.10218 9 1.5V6H13.5C13.8978 6 14.2794 6.15804 14.5607 6.43933C14.842 6.72064 15 7.10217 15 7.5C15 7.89783 14.842 8.27936 14.5607 8.56067C14.2794 8.84196 13.8978 9 13.5 9H9V13.5C9 13.8978 8.84196 14.2794 8.56067 14.5607C8.27936 14.842 7.89783 15 7.5 15C7.10217 15 6.72064 14.842 6.43933 14.5607C6.15804 14.2794 6 13.8978 6 13.5V9H1.5C1.10218 9 0.720645 8.84196 0.439339 8.56067C0.158035 8.27936 0 7.89783 0 7.5C0 7.10217 0.158035 6.72064 0.439339 6.43933C0.720645 6.15804 1.10218 6 1.5 6H6V1.5C6 1.10218 6.15804 0.720645 6.43933 0.439339C6.72064 0.158035 7.10217 0 7.5 0Z"
@@ -81,7 +105,9 @@
             <button type="button" data-modal-target="tambahMataKuliah" data-modal-toggle="tambahMataKuliah"
                 class="flex px-5 py-2 items-center space-x-3 bg-yellow-200 rounded-lg border border-amber-300 group hover:bg-yellow-100">
                 <svg width="15" height="15" viewBox="0 0 20 20" fill="none">
-                    <path d="M14.6297 18.3335L18.3333 14.1669M14.6297 18.3335V5.83353M14.6297 18.3335L10.9259 14.1669M1.66666 1.66687H13.7037M1.66666 5.83353H9.99999M1.66666 10.0002H9.99999" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path
+                        d="M14.6297 18.3335L18.3333 14.1669M14.6297 18.3335V5.83353M14.6297 18.3335L10.9259 14.1669M1.66666 1.66687H13.7037M1.66666 5.83353H9.99999M1.66666 10.0002H9.99999"
+                        stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 <h1 class="text-sm text-amber-600 font-medium group-hover:text-amber-500">Urutkan</h1>
             </button>
@@ -104,27 +130,31 @@
                 </tr>
             </thead>
             <tbody class="border border-yellow-400 align-top">
-                @for ($i = 1; $i <= 5; $i++)
-                    <tr class="bg-white text-xs text-gray-600">
+                @foreach ($mataKuliah as $item)
+                    <tr @class([
+                        'text-xs text-gray-600 bg-white',
+                        'bg-yellow-50' => ($loop->index + 1) % 2 == 0,
+                    ])>
                         <th class="px-2 py-4 text-center">
-                            1
+                            {{ $loop->iteration }}
                         </th>
                         <td class="px-2 py-4">
-                            1421106
+                            {{ strtoupper($item->kode_mk) }}
                         </td>
                         <td class="px-2 py-4">
-                            Algoritma Pemrograman
+                            {{ ucwords($item->mata_kuliah) }}
                         </td>
                         <td class="px-2 py-4">
-                            Ilmu Komputer
+                            {{ $item->prodi->fakultas->fakultas }}
                         </td>
                         <td class="px-2 py-4">
-                            Teknik Informatika
+                            {{ $item->prodi->program_studi }}
                         </td>
                         <td class="flex flex-col px-2 py-4 space-y-2">
                             {{-- Edit --}}
-                            <button type="button" data-modal-target="editMataKuliah" data-modal-toggle="editMataKuliah"
-                                class="flex items-center space-x-2 group">
+                            <button type="button" data-modal-target="{{ 'editMataKuliah' . $item->id . '/edit' }}"
+                                data-modal-toggle="{{ 'editMataKuliah' . $item->id . '/edit' }}"
+                                class="flex items-center space-x-2 group focus:ring-0 focus:outline-none">
                                 <svg width="16" height="17" viewBox="0 0 20 21" fill="none">
                                     <path
                                         d="M20.0934 2.33966L18.3042 0.475835C18.1195 0.283128 17.8766 0.186562 17.6341 0.186562C17.3916 0.186562 17.1491 0.282701 16.9644 0.475407L15.5332 1.96407L18.6622 5.22256L20.0934 3.73432C20.4632 3.34891 20.4632 2.72379 20.0934 2.33966Z"
@@ -143,8 +173,9 @@
                             @include('MataKuliah.update')
 
                             {{-- Delete --}}
-                            <button type="button" data-modal-target="hapus" data-modal-toggle="hapus"
-                                class="flex items-center space-x-2">
+                            <button type="button" data-modal-target="{{ 'hapusMataKuliah' . $item->id }}"
+                                data-modal-toggle="{{ 'hapusMataKuliah' . $item->id }}"
+                                class="flex items-center space-x-2 focus:ring-0 focus:outline-none">
                                 <svg width="16" height="17" viewBox="0 0 20 21" fill="none">
                                     <path
                                         d="M16.875 3.00001H13.125V1.75C13.125 1.05938 12.5656 0.5 11.875 0.5H8.12499C7.43436 0.5 6.87499 1.05938 6.87499 1.75V3.00001H3.125C2.43438 3.00001 1.875 3.55938 1.875 4.25001V5.50001C1.875 6.19 2.43438 6.74938 3.12376 6.75002H16.8757C17.5656 6.74938 18.125 6.19 18.125 5.50001V4.24998C18.125 3.55938 17.5656 3.00001 16.875 3.00001ZM11.875 3.00001H8.12499V2.37499C8.12499 2.03 8.40498 1.74998 8.74998 1.74998H11.25C11.595 1.74998 11.875 2.02997 11.875 2.37499V3.00001ZM3.12498 18C3.12498 19.3806 4.24434 20.5 5.62498 20.5H14.375C15.7556 20.5 16.875 19.3806 16.875 18V7.99999H3.12498V18ZM12.5 9.87501C12.5 9.53002 12.78 9.25 13.125 9.25C13.47 9.25 13.75 9.52999 13.75 9.87501V17.375C13.75 17.72 13.47 18 13.125 18C12.78 18 12.5 17.72 12.5 17.375V9.87501ZM9.37499 9.87501C9.37499 9.53002 9.65499 9.25 10 9.25C10.345 9.25 10.625 9.52999 10.625 9.87501V17.375C10.625 17.72 10.345 18 10 18C9.65501 18 9.37499 17.72 9.37499 17.375V9.87501ZM6.24997 9.87501C6.24997 9.53002 6.52997 9.25 6.87499 9.25C7.22001 9.25 7.5 9.52999 7.5 9.87501V17.375C7.5 17.72 7.22001 18 6.87499 18C6.52997 18 6.24997 17.72 6.24997 17.375V9.87501Z"
@@ -152,9 +183,10 @@
                                 </svg>
                                 <h1 class="text-sm text-red-600 font-medium">Hapus</h1>
                             </button>
+                            @include('MataKuliah.modal-delete')
                         </td>
                     </tr>
-                @endfor
+                @endforeach
             </tbody>
         </table>
     </div>
