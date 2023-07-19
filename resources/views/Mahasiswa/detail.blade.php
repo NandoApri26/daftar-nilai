@@ -44,9 +44,9 @@
                 </div>
                 <div class="py-10">
                     <div class="w-full flex justify-center">
-                        <img src="{{ asset('image/1.jpeg') }}" alt="" class="w-36 h-53 object-cover">
+                        <img src="{{ asset('foto_mahasiswa/' . $mahasiswa->foto) }}" alt="" class="w-36 h-53 object-cover">
                     </div>
-                    <h1 class="mt-5 text-gray-600 text-center font-bold"></h1>
+                    <h1 class="mt-5 text-gray-600 text-center font-bold">{{ ucwords($mahasiswa->nama) }}</h1>
                 </div>
                 <div class="flex px-5 space-x-8 text-gray-600 font-medium">
                     <div class="">
@@ -57,11 +57,11 @@
                         <h1>Kelas</h1>
                     </div>
                     <div class="">
-                        <h1>:1998278938</h1>
-                        <h1>:2019</h1>
-                        <h1>:Ilmu Komputer</h1>
-                        <h1>:Teknik Informatika</h1>
-                        <h1>:A</h1>
+                        <h1>: {{ $mahasiswa->nim }} </h1>
+                        <h1>: {{ $mahasiswa->angkatan }}</h1>
+                        <h1>: {{ $mahasiswa->prodi->fakultas->fakultas }}</h1>
+                        <h1>: {{ $mahasiswa->prodi->program_studi }}</h1>
+                        <h1>: {{ $mahasiswa->kelas }} </h1>
                     </div>
                 </div>
             </div>

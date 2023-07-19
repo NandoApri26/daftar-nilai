@@ -74,9 +74,9 @@
                             <select name="kelas" id="kelas"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
                                 <option value="">Pilih Kelas</option>
-                                <option value=A>A</option>
-                                <option value=B>B</option>
-                                <option value=C>C</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
                             </select>
                         </div>
                     </div>

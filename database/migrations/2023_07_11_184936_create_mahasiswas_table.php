@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('angkatan');
             $table->string('kelas');
             $table->text('foto');
+            $table->foreignId('fakultas_id')->constrained('fakultases')->onDelete('restrict')->onUpdate('restrict');
             $table->foreignId('prodi_id')->constrained('prodis')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });

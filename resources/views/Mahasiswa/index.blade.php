@@ -118,7 +118,7 @@
                             {{ $loop->iteration }}
                         </th>
                         <td class="px-2 py-4">
-                            {{ $item->nama }}
+                            {{ ucwords($item->nama) }}
                         </td>
                         <td class="px-2 py-4">
                             {{ $item->nim }}
@@ -127,10 +127,10 @@
                             {{ $item->angkatan }}
                         </td>
                         <td class="px-2 py-4">
-                            {{ $item->prodi->fakultas->fakultas }}
+                            {{ ucwords($item->prodi->fakultas->fakultas) }}
                         </td>
                         <td class="px-2 py-4">
-                            {{ $item->prodi->program_studi }}
+                            {{ ucwords($item->prodi->program_studi) }}
                         </td>
                         <td class="px-2 py-4">
                             {{ $item->kelas }}

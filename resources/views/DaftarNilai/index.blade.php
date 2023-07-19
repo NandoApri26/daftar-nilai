@@ -108,8 +108,8 @@
                     <th scope="col" class="px-2 py-4">Mata Kuliah</th>
                     <th scope="col" class="px-2 py-4">Kode MK</th>
                     <th scope="col" class="px-2 py-4">Kredit</th>
-                    <th scope="col" class="px-2 py-4">Kelas/Hari/Jam</th>
-                    <th scope="col" class="px-2 py-4">Ruangan</th>
+                    <th scope="col" class="px-2 py-4">Ruangan/Hari/Jam</th>
+                    <th scope="col" class="px-2 py-4">Dosen</th>
                     <th scope="col" class="px-2 py-4">Nilai</th>
                     <th scope="col" class="px-2 py-4">Aksi</th>
                 </tr>
@@ -130,10 +130,10 @@
                             4
                         </td>
                         <td class="px-2 py-4">
-                            SK1D/Selasa/08:00-09:15
+                            D12/Selasa/08:00-09:15
                         </td>
                         <td class="px-2 py-4">
-                            U301
+                            Agung Jordan
                         </td>
                         <td class="px-2 py-4">
                             3.60

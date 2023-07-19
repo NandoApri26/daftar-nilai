@@ -145,10 +145,10 @@
                             {{ ucwords($item->mata_kuliah) }}
                         </td>
                         <td class="px-2 py-4">
-                            {{ $item->prodi->fakultas->fakultas }}
+                            {{ ucwords($item->prodi->fakultas->fakultas) }}
                         </td>
                         <td class="px-2 py-4">
-                            {{ $item->prodi->program_studi }}
+                            {{ ucwords($item->prodi->program_studi) }}
                         </td>
                         <td class="flex flex-col px-2 py-4 space-y-2">
                             {{-- Edit --}}

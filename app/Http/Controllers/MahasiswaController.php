@@ -58,6 +58,7 @@ class MahasiswaController extends Controller
      */
     public function show(Mahasiswa $mahasiswa)
     {
+        $mahasiswa::all();
         return view('Mahasiswa.detail', compact('mahasiswa'));
     }
 
