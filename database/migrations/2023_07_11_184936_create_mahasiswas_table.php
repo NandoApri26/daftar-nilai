@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('nim')->unique();
             $table->integer('angkatan');
             $table->string('kelas');
-            $table->string('foto');
+            $table->text('foto');
             $table->foreignId('prodi_id')->constrained('prodis')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });

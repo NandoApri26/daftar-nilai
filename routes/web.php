@@ -10,6 +10,8 @@ use App\Http\Controllers\MataKuliahController;
 // Model
 use App\Models\Dosen;
 use App\Models\MataKuliah;
+use App\Models\Mahasiswa;
+use App\Models\KRS;
 
 // Route
 use Illuminate\Support\Facades\Route;
@@ -42,7 +44,10 @@ Route::delete('/Dosen/{dosen}', [DosenController::class, 'destroy'])->name('Dele
 
 // Mahasiswa
 Route::get('/Mahasiswa', [MahasiswaController::class, 'index'])->name('Mahasiswa');
-Route::get('/Mahasiswa/{id}', [MahasiswaController::class, 'show'])->name('Mahasiswa.show');
+Route::post('/Mahasiswa/create', [MahasiswaController::class, 'create'])->name('Create');
+// Route::post('/Mahasiswa', [MahasiswaController::class, 'store'])->name('Store');
+Route::get('/Mahasiswa/{mahasiswa}', [MahasiswaController::class, 'show'])->name('Show');
+
 
 Route::get('/MataKuliah', [MataKuliahController::class, 'index'])->name('MataKuliah');
 Route::post('/MataKuliah/create', [MataKuliahController::class, 'create'])->name('Create');

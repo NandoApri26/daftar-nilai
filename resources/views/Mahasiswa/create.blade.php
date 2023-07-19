@@ -15,7 +15,10 @@
             </button>
             <div class="px-6 py-10">
                 <h3 class="mb-10 pb-3 text-xl font-medium text-gray-900 border-b border-gray-600">Tambah Mahasiswa</h3>
-                <form class="space-y-6" action="#">
+
+                <form class="space-y-6" action="{{ url('/Mahasiswa/create') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
                     <div class="flex space-x-5">
                         <div class="w-full">
                             <label for="Nama" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
@@ -24,64 +27,61 @@
                                 placeholder="Masukkan nama">
                         </div>
                         <div class="w-full">
-                            <label for="nidn" class="block mb-2 text-sm font-medium text-gray-900">NIM</label>
-                            <input type="text" name="nidn" id="nidn"
+                            <label for="nim" class="block mb-2 text-sm font-medium text-gray-900">NIM</label>
+                            <input type="text" name="nim" id="nim"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
                                 placeholder="Masukkan no induk mahasiswa">
                         </div>
                     </div>
                     <div class="flex space-x-5">
                         <div class="w-full">
-                            <label for="nidn" class="block mb-2 text-sm font-medium text-gray-900">Angkatan</label>
-                            <input type="text" name="nidn" id="nidn"
+                            <label for="angkatan" class="block mb-2 text-sm font-medium text-gray-900">Angkatan</label>
+                            <input type="text" name="angkatan" id="angkatan"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4"
                                 placeholder="Masukkan angkatan">
                         </div>
                         <div class="w-full">
                             <label for="Fakultas" class="block mb-2 text-sm font-medium text-gray-900">Fakultas</label>
                             <select type="text" name="fakultas" id="fakultas"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
-                                <option value="" class="text-gra3-600">Pilih Fakultas</option>
-                                @for ($i = 1; $i <= 5; $i++)
-                                    <option value="">Ilmu Komputer</option>
-                                @endfor
+                                class="@error('fakultas') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
+                                <option value="" class="text-gray-600">Pilih Fakultas</option>
+                                @foreach ($fakultas as $item)
+                                    <option value="{{ $item->id }}">{{ $item->fakultas }}</option>
+                                @endforeach
                             </select>
+                            @error('fakultas')
+                                <div class="text-xs text-red-600">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="flex space-x-5">
                         <div class="w-full">
                             <label for="programStudi" class="block mb-2 text-sm font-medium text-gray-900">Program
                                 Studi</label>
-                            <select name="programStudi" id="programStudi"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
-                                <option value="">Pilih Program Studi</option>
-                                @for ($i = 1; $i <= 5; $i++)
-                                    <option value="">Sistem Komputer</option>
-                                @endfor
+                            <select type="text" name="prodi" id="prodi"
+                                class="@error('prodi') is-invalid @enderror bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
+                                <option value="" class="text-gray-600">Pilih Program Studi</option>
+                                @foreach ($prodi as $item)
+                                    <option value="{{ $item->id }}">{{ $item->program_studi }}</option>
+                                @endforeach
                             </select>
+                            @error('prodi')
+                                <div class="text-xs text-red-600">{{ $message }}</div>
+                            @enderror
                         </div>
-                        <div class="w-full">
-                            <label for="waktuKuliah" class="block mb-2 text-sm font-medium text-gray-900">Waktu Kuliah</label>
-                            <select name="waktuKuliah" id="waktuKuliah"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
-                                <option value="">Pilih Waktu Kuliah</option>
-                                <option value="0">Pagi</option>
-                                <option value="1">Siang</option>
-                                <option value="2">Sore</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="flex space-x-5">
                         <div class="w-full">
                             <label for="kelas" class="block mb-2 text-sm font-medium text-gray-900">Kelas</label>
                             <select name="kelas" id="kelas"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-0 focus:border-gray-300 block w-full p-4">
                                 <option value="">Pilih Kelas</option>
-                                <option value="0">A</option>
-                                <option value="1">B</option>
-                                <option value="2">C</option>
+                                <option value=A>A</option>
+                                <option value=B>B</option>
+                                <option value=C>C</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="flex space-x-5">
+
                         <div class="w-full">
                             <label for="foto" class="block mb-2 text-sm font-medium text-gray-900">Pilih
                                 Foto</label>

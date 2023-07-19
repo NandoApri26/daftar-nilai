@@ -38,13 +38,15 @@
             <div class="w-full">
                 <div class="flex justify-between space-x-20 p-5 bg-yellow-200 rounded-t-lg border-b border-amber-600">
                     <h1 class="text-sm text-amber-600 font-bold">Data Mahasiswa</h1>
-                    <h1 class="text-sm text-sky-600 font-bold">Edit Data Mahasiswa</h1>
+                    <a href="">
+                        <h1 class="text-sm text-sky-600 font-bold">Edit Data Mahasiswa</h1>
+                    </a>
                 </div>
                 <div class="py-10">
                     <div class="w-full flex justify-center">
                         <img src="{{ asset('image/1.jpeg') }}" alt="" class="w-36 h-53 object-cover">
                     </div>
-                    <h1 class="mt-5 text-gray-600 text-center font-bold">Daffa Bima Perdana</h1>
+                    <h1 class="mt-5 text-gray-600 text-center font-bold"></h1>
                 </div>
                 <div class="flex px-5 space-x-8 text-gray-600 font-medium">
                     <div class="">

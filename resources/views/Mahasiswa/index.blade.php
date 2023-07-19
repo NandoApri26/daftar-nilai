@@ -109,35 +109,38 @@
                 </tr>
             </thead>
             <tbody class="border border-yellow-400 align-top">
-                @for ($i = 1; $i <= 3; $i++)
-                    <tr class="bg-white text-xs text-gray-600">
+                @foreach ($mahasiswa as $item)
+                    <tr @class([
+                        'text-xs text-gray-600 bg-white',
+                        'bg-yellow-50' => ($loop->index + 1) % 2 == 0,
+                    ])>
                         <th class="px-2 py-4 text-center">
-                            1
+                            {{ $loop->iteration }}
                         </th>
                         <td class="px-2 py-4">
-                            Daffa Bima Perdana
+                            {{ $item->nama }}
                         </td>
                         <td class="px-2 py-4">
-                            191420167
+                            {{ $item->nim }}
                         </td>
                         <td class="px-2 py-4">
-                            2019
+                            {{ $item->angkatan }}
                         </td>
                         <td class="px-2 py-4">
-                            Ilmu Komputer
+                            {{ $item->prodi->fakultas->fakultas }}
                         </td>
                         <td class="px-2 py-4">
-                            Teknik Informatika
+                            {{ $item->prodi->program_studi }}
                         </td>
                         <td class="px-2 py-4">
-                            A
+                            {{ $item->kelas }}
                         </td>
                         <td class="px-2 py-4">
-                            <img src="{{ asset('image/bg.jpeg') }}" alt="image" class="w-16 rounded-md">
+                            <img src="{{ asset('foto_mahasiswa/' . $item->foto) }}" alt="image" class="w-16 rounded-md">
                         </td>
                         <td class="flex flex-col px-2 py-4 space-y-2">
                             {{-- View --}}
-                            <a href="{{ route('Mahasiswa.show', 1) }}" class="flex items-center space-x-2">
+                            <a href="{{ url('/Mahasiswa/' . $item->id ) }}" class="flex items-center space-x-2">
                                 <svg width="16" height="17" viewBox="0 0 20 21" fill="none">
                                     <path
                                         d="M0.199951 10.5C1.12114 8.69302 2.524 7.17591 4.25347 6.11634C5.98295 5.05677 7.97171 4.496 9.99995 4.496C12.0282 4.496 14.017 5.05677 15.7464 6.11634C17.4759 7.17591 18.8788 8.69302 19.7999 10.5C18.8788 12.307 17.4759 13.8241 15.7464 14.8837C14.017 15.9432 12.0282 16.504 9.99995 16.504C7.97171 16.504 5.98295 15.9432 4.25347 14.8837C2.524 13.8241 1.12114 12.307 0.199951 10.5ZM9.99995 14.5C11.0608 14.5 12.0782 14.0786 12.8284 13.3284C13.5785 12.5783 14 11.5609 14 10.5C14 9.43913 13.5785 8.42172 12.8284 7.67157C12.0782 6.92143 11.0608 6.5 9.99995 6.5C8.93909 6.5 7.92167 6.92143 7.17152 7.67157C6.42138 8.42172 5.99995 9.43913 5.99995 10.5C5.99995 11.5609 6.42138 12.5783 7.17152 13.3284C7.92167 14.0786 8.93909 14.5 9.99995 14.5ZM9.99995 12.5C9.46952 12.5 8.96081 12.2893 8.58574 11.9142C8.21067 11.5391 7.99995 11.0304 7.99995 10.5C7.99995 9.96957 8.21067 9.46086 8.58574 9.08579C8.96081 8.71071 9.46952 8.5 9.99995 8.5C10.5304 8.5 11.0391 8.71071 11.4142 9.08579C11.7892 9.46086 12 9.96957 12 10.5C12 11.0304 11.7892 11.5391 11.4142 11.9142C11.0391 12.2893 10.5304 12.5 9.99995 12.5Z"
@@ -160,7 +163,7 @@
                             </button>
                         </td>
                     </tr>
-                @endfor
+                @endforeach
             </tbody>
         </table>
     </div>

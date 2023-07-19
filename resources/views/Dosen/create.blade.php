@@ -15,6 +15,7 @@
             </button>
             <div class="px-6 py-10">
                 <h3 class="mb-10 pb-3 text-xl font-medium text-gray-900 border-b border-gray-600">Tambah Dosen</h3>
+                
                 <form class="space-y-6" action="{{ url('/Dosen/create') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf

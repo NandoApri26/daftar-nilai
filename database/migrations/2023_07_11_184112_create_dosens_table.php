@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('nidn')->unique();
             $table->text('alamat');
-            $table->string('foto');
+            $table->text('foto');
             $table->foreignId('prodi_id')->constrained('prodis')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });
